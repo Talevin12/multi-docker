@@ -24,3 +24,15 @@ after_success:
   - docker push talevin2000/multi-nginx 
   - docker push talevin2000/multi-server
   - docker push talevin2000/multi-worker
+
+deploy:
+  - provider: elasticbeanstalk
+  - region: "eu-north-1"
+  - app: "multi-docker"
+  - env: "Multi-docker-env"
+  - bucket_name: "elasticbeanstalk-eu-north-1-076750411957"
+  - bucket_path: "docker-multi"
+  on:
+     branch: master
+  - access_key_id: $AWS_ACCESS_KEY
+  - secret_access_key: $AWS_SECRET_KEY
