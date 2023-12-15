@@ -54,6 +54,7 @@ app.get('/values/current', async (req, res) => {
     redisClient.hgetall('values', (err, values) => {
         res.send(values);
     });
+    res.send("!!!!!!!");
 });
 
 app.post('/values', async (req, res) => {
